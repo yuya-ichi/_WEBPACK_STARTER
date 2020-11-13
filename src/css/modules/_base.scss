@@ -1,0 +1,71 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Base
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+*::selection {}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  line-height: 1.5;
+  font-family: "Helvetica Neue", "Hiragino Kaku Gothic Pro", "Meiryo, Yu Gothic", "YuGothic", "Arial", sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+  background-color: #fff;
+}
+
+/*--------------------
+    Typography
+--------------------*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {}
+
+p {}
+
+em {}
+
+strong {}
+
+h1 {}
+
+/*--------------------
+    Lists
+--------------------*/
+
+ul {}
+
+textarea {}
+
+/*--------------------
+    Links
+--------------------*/
+
+a {
+  &:hover {}
+
+  &:visited {}
+
+  img {
+    border: none;
+  }
+}

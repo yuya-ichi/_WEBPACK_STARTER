@@ -1,0 +1,32 @@
+<%
+  const pageData = {
+    rootPath: '',
+    categoryName: '',
+    title: '',
+    keywords:　'',
+    description: ''
+  };
+  include(pageData.rootPath + 'ejs/_global', {pageData: pageData});
+%>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <%- include(TEMPLATE_PATH + '_meta', {pageData: pageData}) %>
+  <meta property="og:title" content="OGP_TITLE" />
+  <meta property="og:description" content="OGP_DESCRIPTION" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://..." />
+  <meta property="og:image" content="https://...card.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="https://..." />
+  <meta name="twitter:image" content="https://...card.png" />
+</head>
+<body>
+  <%- include(TEMPLATE_PATH + '_header', {pageData: pageData}) %>
+  <div id="content">
+    EJS
+  </div>
+  <%- include(TEMPLATE_PATH + '_footer', {pageData: pageData}) %>
+</body>
+</html>

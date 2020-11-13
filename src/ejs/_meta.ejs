@@ -1,0 +1,14 @@
+<%
+	const keywords = pageData.keywords === '' ? 'SET, KEYWORDS' : pageData.keywords;
+	const description = pageData.description === '' ? 'SET DESCRIPTION' : pageData.description;
+	const pageTitle = pageData.title === '' ? SITE_NAME : SITE_NAME + ' - ' + pageData.title;
+%>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="keywords" content="<%- keywords %>" />
+<meta name="description" content="<%- description %>" />
+<link rel="stylesheet" href="<%= CSS_PATH %>main.css" />
+<script src="<%= JS_PATH %>main.js"></script>
+<title><%= pageTitle %></title>

@@ -1,0 +1,22 @@
+/**
+ * This class describes a deferred.
+ *
+ * @class Deferred (name)
+ */
+
+export class Deferred {
+  constructor() {
+    this.promise = new Promise((resolve, reject) => {
+      this._resolve = resolve;
+      this._reject = reject;
+    });
+  }
+
+  resolve(value) {
+    this._resolve(value);
+  }
+
+  reject(value) {
+    this._reject(value);
+  }
+}
