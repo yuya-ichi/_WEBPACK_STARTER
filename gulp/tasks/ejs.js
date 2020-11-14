@@ -17,7 +17,7 @@ const config = require('../config');
 const paths = {
   src: config.src + '**/!(_)*.ejs',
   dest: config.dist,
-}
+};
 
 //=============
 // Module
@@ -26,13 +26,14 @@ const paths = {
 module.exports = {
   name: 'ejs',
   task: () => {
-    return gulp.src(paths.src)
-      .pipe(plumber({ errorHandler: notify.onError({ title: 'EJS error', message: '<%= error.message %>', }) }))
+    return gulp
+      .src(paths.src)
+      .pipe(plumber({ errorHandler: notify.onError({ title: 'EJS error', message: '<%= error.message %>' }) }))
       .pipe(ejs())
-      .pipe(rename({ extname: '.html', }))
+      .pipe(rename({ extname: '.html' }))
       .pipe(gulp.dest(paths.dest));
   },
   watch: (reload) => {
-    gulp.watch(paths.src).on('change', gulp.series(module.exports.task, reload))
-  }
+    gulp.watch(paths.src).on('change', gulp.series(module.exports.task, reload));
+  },
 };
