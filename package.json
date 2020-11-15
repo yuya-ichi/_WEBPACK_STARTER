@@ -4,10 +4,10 @@
   "description": "webpack starter",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "gulp rebuild & webpack",
-    "build:pro": "gulp rebuild & webpack --mode=production",
-    "start": "gulp rebuild & gulp & webpack --mode=development",
-    "start:pro": "gulp rebuild & gulp --env pro & webpack --mode=production"
+    "build": "webpack",
+    "build:pro": "webpack --mode=production",
+    "start": "gulp & webpack --mode=development",
+    "start:pro": "gulp --env pro & webpack --mode=production"
   },
   "browserslist": [
     "last 2 version",

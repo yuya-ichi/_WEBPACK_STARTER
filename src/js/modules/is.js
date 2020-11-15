@@ -81,3 +81,14 @@ export function isContain(selector, area) {
   if (_area.querySelector(selector)) return true;
   return false;
 }
+
+export function isIE() {
+  return window.navigator.userAgent.toLowerCase().indexOf('trident') !== -1;
+}
+
+export function isSP() {
+  if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('Android') != -1) {
+    return true;
+  }
+  return false;
+}

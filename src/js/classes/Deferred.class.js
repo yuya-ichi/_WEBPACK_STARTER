@@ -16,7 +16,7 @@ export class Deferred {
     this._resolve(value);
   }
 
-  reject(value) {
-    this._reject(value);
+  reject(reason) {
+    this._reject(reason);
   }
 }

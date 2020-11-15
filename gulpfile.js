@@ -46,5 +46,4 @@ tasks.forEach((task) => {
   if (task.cli) task.cli(tasks);
 });
 
-gulp.task('default', gulp.series(browserSync.task, watch));
-gulp.task('rebuild', gulp.series(clean, gulp.parallel(tasks[0].task, tasks[1].task)));
+gulp.task('default', gulp.series(clean, gulp.parallel(tasks[0].task, tasks[1].task), browserSync.task, watch));

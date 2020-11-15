@@ -11,7 +11,7 @@ const gulp = require('gulp');
 const config = require('../config');
 
 const paths = {
-  src: config.src + '**/*.{html,css,json,txt}',
+  src: [config.src + '**/*.{html,css,json,txt}'],
   dest: config.dist,
 };
 
