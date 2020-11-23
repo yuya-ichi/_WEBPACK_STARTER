@@ -34,6 +34,6 @@ module.exports = {
       .pipe(gulp.dest(paths.dest));
   },
   watch: (reload) => {
-    gulp.watch(paths.src).on('change', gulp.series(module.exports.task, reload));
+    gulp.watch(paths.src).on('change', module.exports.task);
   },
 };

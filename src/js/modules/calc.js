@@ -40,6 +40,7 @@ export function degreeToPos(degree, radius) {
 }
 
 export function getElementCenterPos(target, targetCanvas) {
+  var el;
   if (typeof target === 'string') {
     el = document.querySelector(target);
   } else {

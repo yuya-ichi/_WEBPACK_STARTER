@@ -100,6 +100,56 @@ export class Fireworks {
       this.loop();
       this.assignEvents();
     });
+    this.ray = this.generateBomb('ray');
+    this.buble = this.generateBomb('buble');
+    this.shockwave = this.generateBomb();
+    this.update();
+  }
+
+  ray(x, y, ex) {
+    this.ray(x, y, ex);
+  }
+
+  buble(x, y, ex) {
+    this.ray(x, y, ex);
+  }
+
+  shockWave(x, y, ex) {
+    this.ray(x, y, ex);
+  }
+
+  large(x, y, ex) {
+    this.buble(x, y, {
+      circle: {
+        isRing: false,
+      },
+    });
+    this.buble(x, y, {
+      circle: {
+        isRing: true,
+        radius: 1,
+        lineWidth: 4,
+      },
+      perticles: {
+        count: 4,
+      },
+      anime: {
+        duration: function () {
+          return 1500;
+        },
+        radius: function () {
+          return 10;
+        },
+        alpha: [
+          {
+            value: 0,
+            delay: 400,
+          },
+        ],
+      },
+    });
+    this.shockwave(x, y);
+    this.ray(x, y);
   }
 
   init() {}
@@ -362,9 +412,6 @@ function canvasID() {
 function createCanvas() {
   return createElement('canvas', {
     className: 'js-fireworks',
-    attr: {
-      id: 'js-fireworks-' + canvasID(),
-    },
   });
 }
 
@@ -384,7 +431,6 @@ function setCanvas(elm, canvas) {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,.1);
     pointer-events: none;
   `;
   }

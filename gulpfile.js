@@ -13,11 +13,12 @@ const reloadTargets = config.dist + '**/*.{html,css,js}';
 // Task
 //=-=-=-=-=-=-=-
 
-const tasks = [
-  require('./gulp/tasks/copy'),
-  require('./gulp/tasks/images'),
-  //require('./gulp/tasks/ejs'),
-];
+const tasks = {
+  copy: require('./gulp/tasks/copy'),
+  images: require('./gulp/tasks/images'),
+  // js: require('./gulp/tasks/js_include'),
+  // ejs: require('./gulp/tasks/ejs'),
+};
 
 const clean = () => {
   return del(config.dist);
@@ -32,9 +33,10 @@ const watch = () => {
     browserSync.reload();
     done();
   };
-  tasks.forEach((task) => {
+  for (let key in tasks) {
+    let task = tasks[key];
     if (task.watch) task.watch(reload, tasks);
-  });
+  }
   gulp.watch(reloadTargets, reload);
 };
 
@@ -42,8 +44,9 @@ const watch = () => {
 // CLI
 //=-=-=-=-=-=-=-
 
-tasks.forEach((task) => {
+const buildTasks = Object.keys(tasks).map((task) => {
   if (task.cli) task.cli(tasks);
+  return tasks[task].task;
 });
 
-gulp.task('default', gulp.series(clean, gulp.parallel(tasks[0].task, tasks[1].task), browserSync.task, watch));
+gulp.task('default', gulp.series(clean, gulp.parallel(buildTasks), browserSync.task, watch));

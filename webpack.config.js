@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntries = require('webpack-fix-style-only-entries');
 const webpack = require('webpack');
 const MODE = 'development'; // development | production
 const isEnabled = MODE === 'development';
@@ -7,10 +8,13 @@ const dist = 'public';
 module.exports = {
   watch: true,
   mode: MODE,
-  entry: './src/js/main.js',
+  entry: {
+    main: './src/js/main.js',
+    'main.css': './src/css/main.scss',
+  },
   output: {
     path: `${__dirname}/${dist}/js`,
-    filename: 'main.js',
+    filename: '[name].js',
   },
   performance: { hints: false },
   module: {
@@ -37,23 +41,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
-
-      // ASSETS file-loader
-      // {
-      //   test: /\.(jpe?g|png|gif)$/,
-      //   use: {
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: '../img/[name].[ext]',
-      //     },
-      //   },
-      // },
-
-      // ASSETS url-loader
-      // {
-      //   test: /\.(jpe?g|png|gif)$/,
-      //   loader: 'url-loader',
-      // },
 
       // CSS
       {
@@ -98,10 +85,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new FixStyleOnlyEntries(),
     new MiniCssExtractPlugin({
-      path: `${__dirname}/${dist}/css`,
-      filename: '../css/[name].css',
-      ignoreOrder: true,
+      filename: '../css/[name]',
     }),
   ],
 };

@@ -6,12 +6,11 @@
  *   @param {}
  */
 
-import { toArray } from './_toArray';
-import { createElement } from './_createElement';
-import { random } from './_random';
+import { toArray } from '../modules/util';
+import { createElement } from '../modules/dom';
+import { random } from '../modules/calc';
 
 export class ShuffleShowText {
-
   constructor(e, params) {
     this.e = e;
     this.chars = '_ABCDEFGHIJKLMNOPQRSTUVWXYZ01234566789';
@@ -28,7 +27,7 @@ export class ShuffleShowText {
 
   update(e, i) {
     const original = e.textContent;
-    const delay = this.delay * (i * .1);
+    const delay = this.delay * (i * 0.1);
     const shuffle = (timestamp) => {
       if (timestamp > 400 + delay) {
         e.textContent = original;
@@ -38,10 +37,10 @@ export class ShuffleShowText {
       if (timestamp < 100 + delay) {
         e.textContent = this.chars[0];
       } else {
-        e.textContent = this.chars[random(1, this.charsLen)]
+        e.textContent = this.chars[random(1, this.charsLen)];
       }
       requestAnimationFrame(shuffle);
-    }
+    };
     requestAnimationFrame(shuffle);
   }
 
@@ -49,8 +48,7 @@ export class ShuffleShowText {
     let text = this.e.textContent;
     this.e.innerHTML = '';
     toArray(text).forEach((s) => {
-      this.e.appendChild(
-        createElement('span', { className: 'is-anim', text: s }));
+      this.e.appendChild(createElement('span', { className: 'is-anim', text: s }));
     });
   }
 }
